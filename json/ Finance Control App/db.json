@@ -1,0 +1,35 @@
+{
+  "transacoes": [
+    {
+      "id": "1",
+      "descricao": "Salário",
+      "valor": 5000,
+      "tipo": "entrada",
+      "data": "2023-10-27"
+    },
+    {
+      "descricao": "Aluguel (reajustado)",
+      "valor": 1250,
+      "tipo": "saida",
+      "data": "2023-10-28",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "descricao": "Café da tarde",
+      "valor": 15,
+      "tipo": "saida",
+      "data": "2023-10-29"
+    }
+  ],
+  "categorias": [
+    {
+      "id": "1",
+      "nome": "Lazer"
+    },
+    {
+      "id": "2",
+      "nome": "Alimentação"
+    }
+  ]
+}
