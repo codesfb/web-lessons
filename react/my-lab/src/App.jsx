@@ -1,48 +1,52 @@
 // src/App.jsx
 import React, { useState } from 'react';
-import { ExerciciosCompletos } from './Labs';
+import PageEXS from './assets/componentes/UseStateEXS.jsx'; // Corrigido: Apontando para o arquivo do componente
+import './assets/componentes/Home.css';
 
 export default function App() {
   // O estado 'tela' controla o que está visível
   const [tela, setTela] = useState('home');
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+    <div className="home-container">
       {/* Lógica de Troca de Tela */}
       {tela === 'home' ? (
         // --- PÁGINA INICIAL ---
-        <div style={homeStyle}>
-          <h1>🚀 Meu Guia de Estudos React</h1>
+        <div className="home-content">
+          <h1>🚀 Guia de Estudos React</h1>
           <p>Selecione um tópico para praticar:</p>
           
-          <div style={gridStyle}>
-            <button onClick={() => setTela('exercicios')} style={cardBtn}>
+          <div className="grid-container">
+            <button onClick={() => setTela('exercicios')} className="card-btn">
               <h3>Hook: useState</h3>
-              <p>Praticar troca de nomes, contadores e listas.</p>
+              <p>Praticar useState, contadores e listas etc ...</p>
             </button>
 
-            <button disabled style={{ ...cardBtn, opacity: 0.5 }}>
-              <h3>Hook: useEffect (Bloqueado)</h3>
+            <button disabled className="card-btn" style={{ opacity: 0.5 }}>
+              <h3>Hook: useContext (Bloqueado)</h3>
+              <p>Em breve...</p>
+            </button>
+
+            <button disabled className="card-btn" style={{ opacity: 0.5 }}>
+              <h3>React Router (v6+) (Bloqueado)</h3>
+              <p>Em breve...</p>
+            </button>
+
+            <button disabled className="card-btn" style={{ opacity: 0.5 }}>
+              <h3>useRef, useMemo e useCallback (Bloqueado)</h3>
+              <p>Em breve...</p>
+            </button>
+
+            <button disabled className="card-btn" style={{ opacity: 0.5 }}>
+              <h3>useForm, useAuth (Bloqueado)</h3>
               <p>Em breve...</p>
             </button>
           </div>
         </div>
       ) : (
         // --- PÁGINA DE EXERCÍCIOS ---
-        <ExerciciosCompletos voltar={() => setTela('home')} />
+        <PageEXS voltar={() => setTela('home')} />
       )}
     </div>
   );
 }
-
-// Estilos rápidos para o menu
-const homeStyle = { textAlign: 'center', marginTop: '50px' };
-const gridStyle = { display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' };
-const cardBtn = {
-  padding: '20px',
-  width: '250px',
-  cursor: 'pointer',
-  border: '2px solid #333',
-  borderRadius: '12px',
-  backgroundColor: '#fff'
-};

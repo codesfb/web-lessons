@@ -11,6 +11,15 @@ import React, { useState } from 'react';
 
 //exercicio 0
 
+function Aviso(){
+
+  return(
+    <i>Nessa pagina eu entendi sobre o useState do react se voce da uma olhada no codigo vai entender também</i>
+
+  );
+
+}
+
 
 function MudarNome() {
     const [nome, setNome] = useState("Maria");
@@ -240,7 +249,7 @@ export default function App() {
       <p>Estude cada bloco abaixo para entender como o estado se comporta.</p>
       
       
-      
+      <Aviso/>
       <MudarNome />
       <Contador />
       <Espelho />

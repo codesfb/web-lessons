@@ -9,10 +9,40 @@ import React, { useState } from 'react';
  */
 
 // --------------------------------------------------------------------------
-// EXERCÍCIO 0: MudarNome
+// EXERCÍCIO 1: MudarNome
 // Objetivo: Um parágrafo que mostra um nome e um botão que alterna 
 // entre "Maria" e "João" usando um ternário.
 // --------------------------------------------------------------------------
+
+function Aviso(){
+
+  return(
+    <div style={{...cardStyle}}>
+      <i >Nessa pagina eu entendi sobre o useState do react </i>
+
+
+
+    </div>
+    
+  );
+
+}
+
+export function MudarNome(){
+  const [nome, setNome] = useState("Maria")
+
+  return(
+    <div style={{...cardStyle}}>
+      <h3>Exercicio 1 </h3 >
+      <p >Muda nome:{nome}</p>
+      <button onClick={ () => {setNome(nome == "Maria"? "João": "Maria")} }>Clique em mim </button>
+      <i style={{color:"#4d4d4dff"}}>Experimentar mais depois</i>
+
+    </div>
+
+  );
+}
+
 
 
 // --------------------------------------------------------------------------
@@ -62,13 +92,13 @@ import React, { useState } from 'react';
 
 
 // --- COMPONENTE PRINCIPAL (Renderize seus componentes aqui dentro) ---
-export default function App() {
+export default function PageEXS() {
   return (
-    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h1>Mão na Massa: React useState 🧪</h1>
-      <p>Desenvolva os componentes acima e chame-os aqui embaixo para testar.</p>
-
-      {/* Exemplo de como chamar depois de criado: <MudarNome /> */}
+    <div style={{ padding: '20px', fontFamily: 'sans-serif', display: 'flex', flexDirection: 'column' }}>
+      <h1>react lab  🧪</h1>
+      <p></p>
+      <Aviso/>
+      <MudarNome/>
       
     </div>
   );
@@ -80,6 +110,5 @@ const cardStyle = {
   borderRadius: '12px',
   padding: '20px',
   margin: '15px 0',
-  backgroundColor: '#f9f9f9',
   boxShadow: '4px 4px 0px #444'
 };
