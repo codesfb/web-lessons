@@ -42,4 +42,3 @@ Loading State: Como o json-server é local e muito rápido, use o comando json-s
 4. Por que esse projeto?
 Diferente de uma simples "Lista de Tarefas" (To-Do List), um Gerenciador Financeiro exige que você manipule o estado da aplicação de forma mais complexa (ex: se eu apagar uma transação, o saldo total lá no topo precisa diminuir automaticamente).
 
-Você prefere que eu te ajude a montar o HTML inicial desse projeto ou quer ver como fazer a função fetch para calcular o saldo total?

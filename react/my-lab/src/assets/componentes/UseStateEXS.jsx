@@ -46,17 +46,60 @@ export function MudarNome(){
 
 
 // --------------------------------------------------------------------------
-// EXERCÍCIO 1: Contador
+// EXERCÍCIO 2: Contador
 // Objetivo: Um estado numérico. Três botões: um que soma +1, 
 // um que subtrai -1 e um que reseta para 0.
 // --------------------------------------------------------------------------
+export function Contador(){
+
+  const [count, setCount] = useState(0);
+
+  return (
+      <div style={{...cardStyle}}>
+        
+        <h3>Exercicio 3</h3>
+        <p>Contador:{count}</p>
+        <button onClick={()=>  {setCount(count + 1 )}} > Aumentar 1 </button>
+        <button onClick={()=>  {setCount(count - 1 )}} > Diminuir 1 </button>
+        <button onClick={() => {setCount( 0)}}>Limpar </button>
+
+
+      </div>
+  );  
+}
+
+
+
 
 
 // --------------------------------------------------------------------------
-// EXERCÍCIO 2: Espelho
+// EXERCÍCIO 3: Espelho
 // Objetivo: Um input de texto. Abaixo dele, um parágrafo que 
 // exibe exatamente o que está sendo digitado (onChange).
 // --------------------------------------------------------------------------
+
+export function Espelho(){
+    const [txt, setTxt] = useState("");
+
+    return(
+      <div style={{...cardStyle}}>
+          <h3></h3>
+          <input type="text" 
+            placeholder="Digite algo"
+
+            value = {txt}
+
+            onChange={(e)=> setTxt(e.target.value)}
+          />
+
+        <p>Voce esta digitando: {txt}</p>
+
+      </div>
+
+    );
+
+
+}
 
 
 // --------------------------------------------------------------------------
@@ -99,6 +142,8 @@ export default function PageEXS() {
       <p></p>
       <Aviso/>
       <MudarNome/>
+      <Contador/>
+      <Espelho/>
       
     </div>
   );

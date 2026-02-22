@@ -1,3 +1,8 @@
+json usando json server 
+
+ja o react 
+
+
 npx create-next-app@latest
 
 
