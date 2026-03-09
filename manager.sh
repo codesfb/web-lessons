@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# ==============================================================================
+# MANAGER.SH - Gerenciador de Estudos Web
+# ==============================================================================
+# Este script atua como um hub central para:
+# 1. Gerenciar e executar projetos React e JSON Server.
+# 2. Verificar e instalar dependências (node_modules) automaticamente.
+# 3. Explorar e editar arquivos rapidamente usando fzf.
+#
+# Dependências: gum, fzf, kitty (terminal)
+# ==============================================================================
+
 # Configurações de Caminhos (Baseados no contexto)
 ROOT_DIR="/home/fb_plasma/web-lessons"
 REACT_DIR="$ROOT_DIR/react/my-lab"
@@ -7,7 +18,7 @@ JSON_DIR="$ROOT_DIR/json/ Finance Control App"
 
 
 
-# Verifica dependências
+# --- Verificação de Dependências do Sistema ---
 if ! command -v gum &> /dev/null; then
     echo "❌ Erro: 'gum' não está instalado. Instale com: go install github.com/charmbracelet/gum@latest"
     exit 1
@@ -18,7 +29,11 @@ if ! command -v fzf &> /dev/null; then
     exit 1
 fi
 
-# Função auxiliar para abrir comando em novo terminal
+# --- Funções Auxiliares ---
+
+# run_in_new_terminal
+# Abre uma nova janela do terminal (Kitty) executando o comando especificado.
+# Mantém a janela aberta após o término para visualização de logs/erros.
 run_in_new_terminal() {
     local DIR="$1"
     local CMD="$2"
@@ -29,13 +44,14 @@ run_in_new_terminal() {
 
     if command -v kitty &> /dev/null; then
         kitty --title "$TITLE" bash -c "$FULL_CMD" &
-        kitty --title "$TITLE" bash -c "$FULL_CMD" > /dev/null 2>&1 &
     else
         gum style --foreground 196 "❌ Erro: 'kitty' não encontrado."
     fi
 }
 
-# Função para rodar o React Lab
+# --- Funções de Projetos ---
+
+# Executa o ambiente de laboratório React
 run_react() {
     if [ ! -d "$REACT_DIR" ]; then
         gum style --foreground 196 "Diretório não encontrado: $REACT_DIR"
@@ -53,7 +69,7 @@ run_react() {
     run_in_new_terminal "$REACT_DIR" "npm run dev" "React Lab"
 }
 
-# Função para rodar o Finance App (JSON Server)
+# Executa o Finance App (Backend JSON Server + Frontend React)
 run_json() {
     if [ ! -f "$JSON_DIR/db.json" ]; then
         gum style --foreground 196 "Arquivo db.json não encontrado em $JSON_DIR!"
@@ -74,7 +90,7 @@ run_json() {
     run_in_new_terminal "$JSON_DIR" "npm run dev" "Finance App Client (React)"
 }
 
-# Função para explorar arquivos com FZF
+# Navegador de arquivos interativo usando FZF
 explore_files() {
     cd "$ROOT_DIR"
     gum style --foreground 99 "🔍 Selecione um arquivo para editar (ESC para sair)"
@@ -88,7 +104,7 @@ explore_files() {
     fi
 }
 
-# --- Loop Principal da TUI ---
+# --- Loop Principal da Interface (TUI) ---
 while true; do
     clear
     gum style \
