@@ -4,12 +4,12 @@ import CampoTexto from "../CampoTexto/CampoTexto";
 import ListaSuspensa from "../ListaSuspensa/ListaSuspensa";
 import Botao from "../Botao/Botao";
 const Formulario = (props) => {
-    const areas = [
-        'Progr. Básica',
-        'Progr. Web',
-        'Banco de Dados',
-        'Diversos'
-    ]
+    // const areas = [
+    //     'Progr. Básica',
+    //     'Progr. Web',
+    //     'Banco de Dados',
+    //     'Diversos'
+    // ]
 
     const [nome, setNome] = useState('')
     const [titulo, setTitulo] = useState('')
@@ -19,6 +19,7 @@ const Formulario = (props) => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
+        //console.log('Form foi submetido => ', nome, titulo, imagem, area)
         props.aoProfCadastrado(
             {
                 "nome": nome,
@@ -27,6 +28,10 @@ const Formulario = (props) => {
                 "area": area
             }
         );
+        setNome('');
+        setTitulo('');
+        setImagem('');
+        setArea('Progr. Básica');
     }
     return (
         <section className="formulario">
@@ -52,7 +57,7 @@ const Formulario = (props) => {
                 />
                 <ListaSuspensa
                     label="Áreas"
-                    itens={areas}
+                    itens={props.areas}
                     valor={area}
                     aoAlterado={valor => setArea(valor)}
                 />
